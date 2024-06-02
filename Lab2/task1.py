@@ -1,24 +1,26 @@
-# task1.py
-
 # Створення файлів
 open('Прізвище1.txt', 'w').close()
 open('Прізвище2.txt', 'w').close()
 
 # Запис частини тексту в файл Прізвище1.txt
-text = "Це приклад тексту без додаткових символів"
+text = "ІвсенасвітітребапережитиікоженфінішцепосутістартІнапереднетребаворожитиІзаминулимплакатиневарт"
 with open('Прізвище1.txt', 'w', encoding='utf-8') as file:
     file.write(text)
 
 def caesar_cipher(text, shift):
     result = ""
+    alphabet_upper = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'
+    alphabet_lower = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
+    alphabet_length = len(alphabet_upper)
+
     for char in text:
         if char.isalpha():
-            if char in 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ':
-                idx = ord(char) - ord('А')
-                new_char = chr((idx + shift) % 33 + ord('А'))
-            elif char in 'абвгґдеєжзииіїйклмнопрстуфхцчшщьюя':
-                idx = ord(char) - ord('а')
-                new_char = chr((idx + shift) % 33 + ord('а'))
+            if char in alphabet_upper:
+                idx = alphabet_upper.index(char)
+                new_char = alphabet_upper[(idx + shift) % alphabet_length]
+            elif char in alphabet_lower:
+                idx = alphabet_lower.index(char)
+                new_char = alphabet_lower[(idx + shift) % alphabet_length]
             else:
                 new_char = char
             result += new_char
