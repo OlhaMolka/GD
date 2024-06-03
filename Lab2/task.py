@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 
 def create_files():
-    open('Прізвище1.txt', 'w').close()
-    open('Прізвище2.txt', 'w').close()
+    open('Молька1.txt', 'w').close()
+    open('Молька2.txt', 'w').close()
 
 def write_text_to_file(text, filename):
     with open(filename, 'w', encoding='utf-8') as file:
@@ -37,10 +37,10 @@ def caesar_cipher(text, shift):
 def encrypt_text():
     text = text_entry.get("1.0", tk.END).strip()
     if text:
-        write_text_to_file(text, 'Прізвище1.txt')
+        write_text_to_file(text, 'Молька1.txt')
         shift = 3
         encrypted_text = caesar_cipher(text, shift)
-        write_text_to_file(encrypted_text, 'Прізвище2.txt')
+        write_text_to_file(encrypted_text, 'Молька2.txt')
         messagebox.showinfo("Успіх", "Текст зашифровано та збережено.")
     else:
         messagebox.showerror("Помилка", "Будь ласка, введіть текст для шифрування.")
